@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vo.profileVO" dynamic-update="true" table="Profile">
+   
+   	<id name="profileID" type="int" column="profile_ID" >
+   		<generator class="increment"/>
+  	</id>
+  
+	<property name="regID" type="int" column="reg_ID"/>
+	<property name="email" type="string" column="email"  />
+	<property name="ContactNumber" type="string" column="ContactNumber"/>
+	<property name="since" type="string" column="since" />
+	<property name="companyName" type="string" column="companyName"/>
+	<property name="currentPosition" type="string" column="currentPosition" />
+	<property name="department" type="string" column="department" />
+	
+	<property name="role" type="string" column="role"  />
+	<property name="branchName" type="string" column="branchName" />
+	<property name="dateofBirth" type="string" column="dateofBirth" />
+	<property name="branchAddress" type="string" column="branchAddress" />
+	<property name="maritalStatus" type="string" column="maritalStatus" />
+	<property name="nationality" type="string" column="nationality" />
+	
+	<property name="zipCode" type="string" column="zipCode"  />
+	<property name="street" type="string" column="street" />
+	<property name="country" type="string" column="country" />
+	<property name="state" type="string" column="state" />
+	<property name="city" type="string" column="city" />
+	<property name="languagesKnown" type="string" column="languagesKnown" />
+	<property name="Designation" type="string" column="Designation" />
+	
+	
+</class>
+</hibernate-mapping>

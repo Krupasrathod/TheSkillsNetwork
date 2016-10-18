@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vo.formVO" dynamic-update="true" table="Form_Details">
+   
+   	<id name="formId" type="int" column="Form_Id" >
+   		<generator class="increment"/>
+  	</id>
+	
+  	<property name="formName"> 
+ 		<column name="Form_Name" />
+  	</property> 
+  	
+   	<property name="originalName"> 
+  		<column name="Original_Name"/> 
+  	</property> 
+  
+	<property name="description"> 
+  		<column name="Description"/>
+  	</property>
+  	  
+ </class>
+</hibernate-mapping>

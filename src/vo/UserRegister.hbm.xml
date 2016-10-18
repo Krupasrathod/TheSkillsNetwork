@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vo.UserRegisterVO" dynamic-update="true" table="User_Registration">
+   
+   	<id name="userID" type="int" column="User_ID" >
+   		<generator class="increment"/>
+  	</id>
+
+	<property name="firstname" type="string" column="firstname"  />
+	<property name="lastname" type="string" column="lastname" />
+	<property name="email" type="string" column="email" />
+	<property name="password" type="string" column="password" />
+	<property name="phone" type="string" column="phone" />
+	<property name="role" type="string" column="Role" />
+	
+</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vo.skillsVO" dynamic-update="true" table="SKILLS_LIST">
+   
+   	<id name="subjectID" type="int" column="subject_ID" >
+   		<generator class="increment"/>
+  	</id>
+	
+  	<property name="subjectName"> 
+ 		<column name="subject_Name" />
+  	</property> 
+  	
+   	<property name="parentID"> 
+  		<column name="parent_ID"/> 
+  	</property> 
+  
+	
+  	  
+ </class>
+</hibernate-mapping>

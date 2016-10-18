@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="vo.OTPVO" dynamic-update="true" table="OTP">
+   
+   	<id name="userID" type="int" column="User_ID" >
+   		<generator class="increment"/>
+  	</id>
+
+	<property name="email1" type="string" column="email" />
+	<property name="fpasswd" type="string" column="forgotpassword" />
+	<property name="otp1" type="int" column="otp" />
+	<property name="sentTime" type="long" column="sentTime" />
+	<property name="expireTime" type="long" column="expireTime" />
+	<property name="Status" type="string" column="Status" />
+
+	
+	
+<!--   	<property name="FirstName"> -->
+<!--    		<column name="FirstName" /> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="LastName"> -->
+<!--   		<column name="LastName"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="EmailAdress"> -->
+<!--   		<column name="EmailAdress"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="Password"> -->
+<!--   		<column name="Password"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="ConfirmPassword"> -->
+<!--   		<column name="ConfirmPassword"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="ContactNumber"> -->
+<!--   		<column name="ContactNumber"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="Address"> -->
+<!--   		<column name="Address"/> -->
+<!--   	</property> -->
+  	
+
+<!--   	<property name="City"> -->
+<!--   		<column name="City"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="State"> -->
+<!--   		<column name="State"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="Country"> -->
+<!--   		<column name="Country"/> -->
+<!--   	</property> -->
+  	
+<!--   	<property name="Designation"> -->
+<!--   		<column name="Designation"/> -->
+<!--   	</property> -->
+  	
+  	
+  	  
+ </class>
+</hibernate-mapping>
