@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,6 +18,7 @@
 <link rel="stylesheet" href="css/main-style.css">
 <link rel="stylesheet" href="css/style.css">
 
+
 </head>
 
 <body>
@@ -25,9 +28,28 @@
   <div class="toolbar">
     <div class="uou-block-1a blog">
       <div class="container">
+        <div class="search"> <a href="#" class="toggle fa fa-search"></a>
+          <form action="#">
+            <input type="text" class="search-input" placeholder="Search ...">
+            <input type="submit" value="">
+          </form>
+        </div>
+        <ul class="social">
+          <li><a href="#" class="fa fa-facebook"></a></li>
+          <li><a href="#" class="fa fa-twitter"></a></li>
+          <li><a href="#" class="fa fa-google-plus"></a></li>
+        </ul>
         <ul class="authentication">
-          <li><a href="logout.jsp">Logout</a></li>
-       </ul>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Register</a></li>
+        </ul>
+        <div class="language"> <a href="#" class="toggle"><img src="images/flags/32/en.html" alt=""> ENG</a>
+          <ul>
+            <li><a href="#"><img src="images/flags/32/PT.png" alt=""> PT</a></li>
+            <li><a href="#"><img src="images/flags/32/FR.png" alt=""> FR</a></li>
+            <li><a href="#"><img src="images/flags/32/ES.png" alt=""> ES</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     <!-- end .uou-block-1a --> 
@@ -39,6 +61,7 @@
       <div class="container"> <a href="#" class="logo"><img src="images/logo.png" alt=""></a> <a href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
         <nav class="nav">
           <ul class="sf-menu">
+            <li><a href="index-2.html"><i class="fa  fa-home"></i></a></li>
             <li> <a href="listing-filter.html">Professionals</a> </li>
             <li> <a href="index-2.html">Pages</a>
               <ul>
@@ -285,75 +308,38 @@
                     <div class="sidebar">
                       <h5 class="main-title">Professional Details</h5>
                       <div class="sidebar-information">
-                        <c:forEach items="${sessionScope.passmatch}" var="i">
-                       
-                      <form action="<%=request.getContextPath()%>/UserProfile?flag=update&ID=${i.id}" method="post">
-                       <input type="hidden" name="password" value="${i.password}">
-                        <ul class="single-category" >
+                        <ul class="single-category">
                           <li class="row">
-                            <h6 class="title col-xs-6">First Name</h6>
-                            <input type="hidden" name="Hdnfirstname" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;"  id="firstname"  class="x-editable" data-placement="right" data-type="text" data-pk="1"  data-placeholder="Required" data-original-title="Enter your firstname">
-								${i.firstName}</a></span></li>
+                            <h6 class="title col-xs-6">Name</h6>
+                            <span class="subtitle col-xs-6">Abu Antar</span></li>
                           <li class="row">
-                            <h6 class="title col-xs-6">Last Name</h6>
-                            <input type="hidden" name="Hdnlastname" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="lastname" class="x-editable" data-placement="right" data-type="text" data-pk="1" data-original-title="Enter username">
-									${i.lastname}</a></span></li>
-					    <li class="row">
+                            <h6 class="title col-xs-6">Age</h6>
+                            <span class="subtitle col-xs-6">38 Years Old</span></li>
+                          <li class="row">
                             <h6 class="title col-xs-6">Location</h6>
-                            <input type="hidden" name="Hdnaddress" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="address" class="x-editable" data-placement="right"  data-type="address" data-pk="1" data-original-title="Please, fill address">
-									</a></span></li>
+                            <span class="subtitle col-xs-6">Jordan Amman</span></li>
                           <li class="row">
-                            <h6 class="title col-xs-6">Experiance Since</h6>
-                            <input type="hidden" name="HdnexperienceSince" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="experienceSince" class="x-editable" data-placement="right"  data-type="combodate" data-template="D MMM YYYY" data-format="YYYY-MM-DD" data-viewformat="MMM D, YYYY" data-pk="1" data-original-title="Select Date/Month/year ">
-									</a></span></li>
-						<li class="row">
-                            <h6 class="title col-xs-6">Company Name</h6>
-                            <input type="hidden" name="HdncompanyName" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="companyName" class="x-editable" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-original-title="Enter your Current Company Name">
-								</a></span></li>	
-						<li class="row">
-                            <h6 class="title col-xs-6">Company Address</h6>
-                            <input type="hidden" name="HdncompanyAddress" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="companyAddress" class="x-editable" data-type="address" data-pk="1" data-placement="right" data-placeholder="Required" data-original-title="Enter your Current Company Address">
-								</a></span></li>
-										
-                         <li class="row">
-                            <h6 class="title col-xs-6">Country</h6>
-                            <input type="hidden" name="Hdncountry" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="country" data-placement="right" data-type="select2" data-pk="1"  data-original-title="Select country">
-									</a></span></li> 
-						<li class="row">
-                            <h6 class="title col-xs-6">Gender</h6>
-                            <input type="hidden" name="Hdngender" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="gender" data-placement="right" data-type="select2" data-pk="1" data-original-title="Enter tags"></a></span></li>
+                            <h6 class="title col-xs-6">Experiance</h6>
+                            <span class="subtitle col-xs-6">15 Years</span></li>
+                          <li class="row">
+                            <h6 class="title col-xs-6">Dgree</h6>
+                            <span class="subtitle col-xs-6">MBA</span></li>
                           <li class="row">
                             <h6 class="title col-xs-6">Career Lavel</h6>
-                            <input type="hidden" name="Hdngroup" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="group" data-type="select2" data-pk="1"  data-source="/groups" data-original-title="Select group">
-									Admin </a></span></li>
+                            <span class="subtitle col-xs-6">Mid-Level</span></li>
                           <li class="row">
                             <h6 class="title col-xs-6">Phone</h6>
-                            <input type="hidden" name="Hdnphone" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="phone" class="x-editable" data-placement="right" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-original-title="Enter your Contact Number">
-								${i.phone}</a></span></li>
+                            <span class="subtitle col-xs-6">(800) 123-4567</span></li>
+                          <li class="row">
+                            <h6 class="title col-xs-6">Fax </h6>
+                            <span class="subtitle col-xs-6">(800) 123-4568</span></li>
                           <li class="row">
                             <h6 class="title col-xs-6">E-mail</h6>
-                            <input type="hidden" name="Hdnemail" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="email" class="x-editable" data-placement="right" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-original-title="Enter your Email Address">
-								${i.email}</a></span></li>
+                            <span class="subtitle col-xs-6"><a href="#.">example@example.com</a></span></li>
                           <li class="row">
                             <h6 class="title col-xs-6">Website</h6>
-                            <input type="hidden" name="Hdnwebsite" value=""/>
-                            <span class="subtitle col-xs-6"><a href="javascript:;" id="website" class="x-editable" data-placement="right" data-type="text" data-pk="1" data-value="www.abc.com" data-placement="right" data-placeholder="Required" data-original-title="Enter your Website Name">
-								</a></span></li>
-						   </ul>
-						   <button class="btn btn-primary" type="submit"  value="submit">Update</button>
-                         </form>
-                        </c:forEach>
+                            <span class="subtitle col-xs-6"><a href="#.">example.com </a></span></li>
+                        </ul>
                       </div>
                     </div>
                     
@@ -1284,405 +1270,12 @@
 <script src="js/owl.carousel.min.js"></script> 
 <script src="js/gmap3.min.js"></script> 
 <script src="js/scripts.js"></script> 
-
-<script src="js/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
-
 <script>
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
-
-<script>
-jQuery(document).ready(function() {
-	$.fn.editable.defaults.mode = 'popup';
-	$.fn.editable.defaults.inputclass = 'form-control';
-	 $.mockjaxSettings.responseTime = 500;
-	
-	// initiate layout and plugins
-	Metronic.init(); // init metronic core components
-	Layout.init(); // init current layout
-	Demo.init(); 
-	Todo.init();// init demo features
-	//FormEditable.init();
-	
-	 $('.x-editable').editable({
-		success:function (response, newValue)
-		{	
-			$(this).parent().siblings('input[type="hidden"]').val(newValue)
-		}
-	 });
-	 $('#gender').editable({
-		 prepend: "not selected",
-         inputclass: 'form-control',         
-         source: [{
-             value: 1,
-             text: 'Male'
-         }, {
-             value: 2,
-             text: 'Female'
-         }         
-     ],
-     success:function (response, newValue)
-		{	
-       	 
-			$(this).parent().siblings('input[type="hidden"]').val(newValue)
-		},
-     });
-	           
-     $('#group').editable({
-         inputclass: 'form-control input-medium',
-         select2: {
-             tags: ['Hiring Manager', 'Trainer', 'Mentor', 'Trainee', 'Recruiter'],
-             tokenSeparators: [",", " "]
-         },
-         success:function (response, newValue)
- 		{	
-        	 
- 			$(this).parent().siblings('input[type="hidden"]').val(newValue)
- 		},
-     });
-	 
-	 var countries = [];
-     $.each({
-         "BD": "Bangladesh",
-         "BE": "Belgium",
-         "BF": "Burkina Faso",
-         "BG": "Bulgaria",
-         "BA": "Bosnia and Herzegovina",
-         "BB": "Barbados",
-         "WF": "Wallis and Futuna",
-         "BL": "Saint Bartelemey",
-         "BM": "Bermuda",
-         "BN": "Brunei Darussalam",
-         "BO": "Bolivia",
-         "BH": "Bahrain",
-         "BI": "Burundi",
-         "BJ": "Benin",
-         "BT": "Bhutan",
-         "JM": "Jamaica",
-         "BV": "Bouvet Island",
-         "BW": "Botswana",
-         "WS": "Samoa",
-         "BR": "Brazil",
-         "BS": "Bahamas",
-         "JE": "Jersey",
-         "BY": "Belarus",
-         "O1": "Other Country",
-         "LV": "Latvia",
-         "RW": "Rwanda",
-         "RS": "Serbia",
-         "TL": "Timor-Leste",
-         "RE": "Reunion",
-         "LU": "Luxembourg",
-         "TJ": "Tajikistan",
-         "RO": "Romania",
-         "PG": "Papua New Guinea",
-         "GW": "Guinea-Bissau",
-         "GU": "Guam",
-         "GT": "Guatemala",
-         "GS": "South Georgia and the South Sandwich Islands",
-         "GR": "Greece",
-         "GQ": "Equatorial Guinea",
-         "GP": "Guadeloupe",
-         "JP": "Japan",
-         "GY": "Guyana",
-         "GG": "Guernsey",
-         "GF": "French Guiana",
-         "GE": "Georgia",
-         "GD": "Grenada",
-         "GB": "United Kingdom",
-         "GA": "Gabon",
-         "SV": "El Salvador",
-         "GN": "Guinea",
-         "GM": "Gambia",
-         "GL": "Greenland",
-         "GI": "Gibraltar",
-         "GH": "Ghana",
-         "OM": "Oman",
-         "TN": "Tunisia",
-         "JO": "Jordan",
-         "HR": "Croatia",
-         "HT": "Haiti",
-         "HU": "Hungary",
-         "HK": "Hong Kong",
-         "HN": "Honduras",
-         "HM": "Heard Island and McDonald Islands",
-         "VE": "Venezuela",
-         "PR": "Puerto Rico",
-         "PS": "Palestinian Territory",
-         "PW": "Palau",
-         "PT": "Portugal",
-         "SJ": "Svalbard and Jan Mayen",
-         "PY": "Paraguay",
-         "IQ": "Iraq",
-         "PA": "Panama",
-         "PF": "French Polynesia",
-         "BZ": "Belize",
-         "PE": "Peru",
-         "PK": "Pakistan",
-         "PH": "Philippines",
-         "PN": "Pitcairn",
-         "TM": "Turkmenistan",
-         "PL": "Poland",
-         "PM": "Saint Pierre and Miquelon",
-         "ZM": "Zambia",
-         "EH": "Western Sahara",
-         "RU": "Russian Federation",
-         "EE": "Estonia",
-         "EG": "Egypt",
-         "TK": "Tokelau",
-         "ZA": "South Africa",
-         "EC": "Ecuador",
-         "IT": "Italy",
-         "VN": "Vietnam",
-         "SB": "Solomon Islands",
-         "EU": "Europe",
-         "ET": "Ethiopia",
-         "SO": "Somalia",
-         "ZW": "Zimbabwe",
-         "SA": "Saudi Arabia",
-         "ES": "Spain",
-         "ER": "Eritrea",
-         "ME": "Montenegro",
-         "MD": "Moldova, Republic of",
-         "MG": "Madagascar",
-         "MF": "Saint Martin",
-         "MA": "Morocco",
-         "MC": "Monaco",
-         "UZ": "Uzbekistan",
-         "MM": "Myanmar",
-         "ML": "Mali",
-         "MO": "Macao",
-         "MN": "Mongolia",
-         "MH": "Marshall Islands",
-         "MK": "Macedonia",
-         "MU": "Mauritius",
-         "MT": "Malta",
-         "MW": "Malawi",
-         "MV": "Maldives",
-         "MQ": "Martinique",
-         "MP": "Northern Mariana Islands",
-         "MS": "Montserrat",
-         "MR": "Mauritania",
-         "IM": "Isle of Man",
-         "UG": "Uganda",
-         "TZ": "Tanzania, United Republic of",
-         "MY": "Malaysia",
-         "MX": "Mexico",
-         "IL": "Israel",
-         "FR": "France",
-         "IO": "British Indian Ocean Territory",
-         "FX": "France, Metropolitan",
-         "SH": "Saint Helena",
-         "FI": "Finland",
-         "FJ": "Fiji",
-         "FK": "Falkland Islands (Malvinas)",
-         "FM": "Micronesia, Federated States of",
-         "FO": "Faroe Islands",
-         "NI": "Nicaragua",
-         "NL": "Netherlands",
-         "NO": "Norway",
-         "NA": "Namibia",
-         "VU": "Vanuatu",
-         "NC": "New Caledonia",
-         "NE": "Niger",
-         "NF": "Norfolk Island",
-         "NG": "Nigeria",
-         "NZ": "New Zealand",
-         "NP": "Nepal",
-         "NR": "Nauru",
-         "NU": "Niue",
-         "CK": "Cook Islands",
-         "CI": "Cote d'Ivoire",
-         "CH": "Switzerland",
-         "CO": "Colombia",
-         "CN": "China",
-         "CM": "Cameroon",
-         "CL": "Chile",
-         "CC": "Cocos (Keeling) Islands",
-         "CA": "Canada",
-         "CG": "Congo",
-         "CF": "Central African Republic",
-         "CD": "Congo, The Democratic Republic of the",
-         "CZ": "Czech Republic",
-         "CY": "Cyprus",
-         "CX": "Christmas Island",
-         "CR": "Costa Rica",
-         "CV": "Cape Verde",
-         "CU": "Cuba",
-         "SZ": "Swaziland",
-         "SY": "Syrian Arab Republic",
-         "KG": "Kyrgyzstan",
-         "KE": "Kenya",
-         "SR": "Suriname",
-         "KI": "Kiribati",
-         "KH": "Cambodia",
-         "KN": "Saint Kitts and Nevis",
-         "KM": "Comoros",
-         "ST": "Sao Tome and Principe",
-         "SK": "Slovakia",
-         "KR": "Korea, Republic of",
-         "SI": "Slovenia",
-         "KP": "Korea, Democratic People's Republic of",
-         "KW": "Kuwait",
-         "SN": "Senegal",
-         "SM": "San Marino",
-         "SL": "Sierra Leone",
-         "SC": "Seychelles",
-         "KZ": "Kazakhstan",
-         "KY": "Cayman Islands",
-         "SG": "Singapore",
-         "SE": "Sweden",
-         "SD": "Sudan",
-         "DO": "Dominican Republic",
-         "DM": "Dominica",
-         "DJ": "Djibouti",
-         "DK": "Denmark",
-         "VG": "Virgin Islands, British",
-         "DE": "Germany",
-         "YE": "Yemen",
-         "DZ": "Algeria",
-         "US": "United States",
-         "UY": "Uruguay",
-         "YT": "Mayotte",
-         "UM": "United States Minor Outlying Islands",
-         "LB": "Lebanon",
-         "LC": "Saint Lucia",
-         "LA": "Lao People's Democratic Republic",
-         "TV": "Tuvalu",
-         "TW": "Taiwan",
-         "TT": "Trinidad and Tobago",
-         "TR": "Turkey",
-         "LK": "Sri Lanka",
-         "LI": "Liechtenstein",
-         "A1": "Anonymous Proxy",
-         "TO": "Tonga",
-         "LT": "Lithuania",
-         "A2": "Satellite Provider",
-         "LR": "Liberia",
-         "LS": "Lesotho",
-         "TH": "Thailand",
-         "TF": "French Southern Territories",
-         "TG": "Togo",
-         "TD": "Chad",
-         "TC": "Turks and Caicos Islands",
-         "LY": "Libyan Arab Jamahiriya",
-         "VA": "Holy See (Vatican City State)",
-         "VC": "Saint Vincent and the Grenadines",
-         "AE": "United Arab Emirates",
-         "AD": "Andorra",
-         "AG": "Antigua and Barbuda",
-         "AF": "Afghanistan",
-         "AI": "Anguilla",
-         "VI": "Virgin Islands, U.S.",
-         "IS": "Iceland",
-         "IR": "Iran, Islamic Republic of",
-         "AM": "Armenia",
-         "AL": "Albania",
-         "AO": "Angola",
-         "AN": "Netherlands Antilles",
-         "AQ": "Antarctica",
-         "AP": "Asia/Pacific Region",
-         "AS": "American Samoa",
-         "AR": "Argentina",
-         "AU": "Australia",
-         "AT": "Austria",
-         "AW": "Aruba",
-         "IN": "India",
-         "AX": "Aland Islands",
-         "AZ": "Azerbaijan",
-         "IE": "Ireland",
-         "ID": "Indonesia",
-         "UA": "Ukraine",
-         "QA": "Qatar",
-         "MZ": "Mozambique"
-     }, function (k, v) {
-         countries.push({
-             id: k,
-             text: v
-         });
-     });
-
-     $('#country').editable({
-         inputclass: 'form-control input-medium',
-         source: countries,
-         success:function (response, newValue)
- 		{	
-        	 
- 			$(this).parent().siblings('input[type="hidden"]').val(newValue)
- 		},
-     });
-     
-    	 	
-	});
-</script>
-
-<script type="text/javascript">
-
-$(document).ready(function(){	
-	jQuery.validator.addMethod("lettersonly", function (value, element) {
-	    //return this.optional(element) || /^[a-z]+$/i.test(value);
-	    return this.optional(element) || /^[a-zA-Z ]*$/i.test(value);
-	}, "Enter only alphabet characters.");
-	jQuery.validator.addMethod("email", function (value, element) {
-	    //return this.optional(element) || /^[a-z]+$/i.test(value);
-	    return this.optional(element) || /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/i.test(value);
-	}, "Enter only Email Address Here.");
-	 jQuery.validator.addMethod("validpassword", function (value, element) {
-		     //return this.optional(element) || /^[a-z]+$/i.test(value);       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
-		     return this.optional(element) || /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/i.test(value);
-		 }, "Input must contain at least one digit/special characters and alphanumeric letter and be at least six characters long.");
-	
-// 	 jQuery.validator.addMethod("digits", function (value, element) {
-// 		    //return this.optional(element) || /^[a-z]+$/i.test(value);
-// 		    return this.optional(element) ||  /^\+(?:[0-9] ?){6,14}[0-9]$/i.test(value);
-// 		}, "Enter only numbers.");
-	
-	 
-	 
-	$('#btncontactcompany').on('click', function(){		
-		$('#frmcontact').validate({
-	        rules: {
-	        	contactfullname: {
-	                required: true,
-	                minlength: 2,
-	                maxlength: 30,
-	                lettersonly:true
-	            },
-	            contactemail: {
-	                required: true,
-	                minlength: 2,
-	                maxlength: 30,
-	                email:true
-	            },
-	            contactphone: {
-	                required: true,
-	                minlength: 10,
-	                maxlength: 10,
-	                digits:true
-	            }
-	        },
-	        errorClass: 'help-block',
-	        errorElement: 'span',
-	        highlight: function (element, errorClass, validClass) {	        	
-	        	/* $(element).css('border','1px solid red');	            
-	            $(element).parents().removeClass('validate-success').addClass('validate-error'); */
-	        	$(element).parents('.divValidate').removeClass('has-success').addClass('has-error');	            
-	        },
-	        unhighlight: function (element, errorClass, validClass) {
-	        	/* $(element).css('border','1px solid green');
-	        	$(element).parents().removeClass('validate-error').addClass('validate-success'); */
-	        	$(element).parents('.divValidate').removeClass('has-error').addClass('has-success');
-	        },  
-	        submitHandler: function () {                
-                $('#frmcontact').submit();
-            }
-	    });
-		
-	});
-
-});
-</script>
 </body>
+
+
 </html>
