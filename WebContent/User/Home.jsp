@@ -8,234 +8,36 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>The Skills Network - Social Network HTML Template</title>
 
-<!-- Fonts Online -->
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+
+<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> -->
+
+<link rel="shortcut icon" href="images/Bugfree.ico">
 
 <!-- Style Sheet -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/owl.carousel.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/main-style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+<link rel="stylesheet" href="css/main-style.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/stylesheet.css">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/User/css/intlTelInput.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/User/css/demo.css">
-
-<script type="text/javascript">
-var country_arr = new Array("Afghanistan","Albania","Algeria", "India", "USA", "Vietnam");
-
-var s_a = new Array();
-s_a[1]="+93";
-s_a[2]="+355";
-s_a[3]="+213";
-s_a[4]="+91";
-s_a[5]="+1";
-s_a[6]="+84";
-function print_country(country){
-    //given the id of the <select> tag as function argument, it inserts <option> tags
-    var option_str = document.getElementById(country);
-    option_str.length=0;
-    option_str.options[0] = new Option('Select Country','');
-    option_str.selectedIndex = 0;
-    for (var i=0; i<country_arr.length; i++) {
-    option_str.options[option_str.length] = new Option(country_arr[i],country_arr[i]);
-    }
-}
-
-function print_state(state, selectedIndex){
-    var option_str = document.getElementById(state);
-    option_str.length=0;    // Fixed by Julian Woods
-//     option_str.options[0] = new Option('Select State','');
-    option_str.selectedIndex = 0;
-    var state_arr = s_a[selectedIndex].split("|");
-    for (var i=0; i<state_arr.length; i++) {
-    option_str.options[option_str.length] = new Option(state_arr[i],state_arr[i]);
-    }
-}
-</script>
-
-<script>
-var temp=true;
-
-function loademail()
-	{
-	alert("check email");
-	//  var data_file = "http://localhost:8080/Project2/Admin/loadUser.jsp";
-		var email=document.getElementById("otpemail").value;
-		var my_submit=document.getElementById("otpsubmit");
-		alert("email for otp is:" +email);
-		
-		var xmlhttp;
-		
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  	xmlhttp=new XMLHttpRequest();
-		  alert("request done");
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-	
-	
-		
-		xmlhttp.onreadystatechange = function() {
-		
-			if (xmlhttp.readyState == 4) {
-				alert("Return111");
-				
-				var jsonObj = JSON.parse(xmlhttp.responseText);
-				for(i=0 ; i<jsonObj.length ; i++)
-				{
-				// document.getElementById("abcd").innerHTML = jsonObj[i].email+"";
-              
-				document.getElementById("otpqr").innerHTML = "";
-				otpsubmit.removeAttribute("disabled");
-				temp=false;
-				
-				//var a=jsonObj.length();
-				//alert(a);
-				//alert(d);
-				//alert("Return222");
-				//document.getElementById('abcd').innerHTML="jsonObj.userName";
-				//alert("Return333");
-		
-			}
-				
-				
-				if(jsonObj.length == 0)
-					{
-					document.getElementById("otpqr").innerHTML = "Email Doesn't Exist";
-					otpsubmit.disabled=true;
-					Alert("Out of loop");
-					
-					temp=true;
-					}
-		}
-
-		}
-		alert("sending");
-		xmlhttp.open("get", "${pageContext.request.contextPath}/UserRegisterController?flag=searchUserName&email="+email,true);
-		xmlhttp.send();
-		
-		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
-			0: request not initialized
-			1: server connection established
-			2: request received
-			3: processing request
-			4: request finished and response is ready */
+<style type="text/css">
+	.validate-success{
+		color:#356635;
 	}
-</script>
-
-<script>
-var temp=true;
-
-function loadData()
-	{
-	alert("check");
-	//  var data_file = "http://localhost:8080/Project2/Admin/loadUser.jsp";
-		var email=document.getElementById("email").value;
-		var my_submit=document.getElementById("my_submit");
-		alert("email is:" +email);
-		
-		var xmlhttp;
-		
-		if (window.XMLHttpRequest)
-		  {// code for IE7+, Firefox, Chrome, Opera, Safari
-		  	xmlhttp=new XMLHttpRequest();
-		  alert("request done");
-		  }
-		else
-		  {// code for IE6, IE5
-		  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-		  }
-	
-	
-		
-		xmlhttp.onreadystatechange = function() {
-		
-			if (xmlhttp.readyState == 4) {
-				alert("Return111");
-				
-				var jsonObj = JSON.parse(xmlhttp.responseText);
-				for(i=0 ; i<jsonObj.length ; i++)
-				{
-				// document.getElementById("abcd").innerHTML = jsonObj[i].email;
-              
-				document.getElementById("pqr").innerHTML = jsonObj[i].email+"Already Exists";
-				my_submit.disabled=true;
-				temp=false;
-				
-				//var a=jsonObj.length();
-				//alert(a);
-				//alert(d);
-				//alert("Return222");
-				//document.getElementById('abcd').innerHTML="jsonObj.userName";
-				//alert("Return333");
-		
-			}
-				if(jsonObj.length == 0)
-					{
-					document.getElementById("pqr").innerHTML = "";
-					Alert("Out of loop");
-					my_submit.removeAttribute("disabled");
-					temp=true;
-					}
-		}
-
-		}
-		alert("sending");
-		xmlhttp.open("get", "${pageContext.request.contextPath}/UserRegisterController?flag=searchUserName&email="+email,true);
-		xmlhttp.send();
-		
-		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
-			0: request not initialized
-			1: server connection established
-			2: request received
-			3: processing request
-			4: request finished and response is ready */
+	.validate-error{
+		color:#b94a48;
 	}
-</script>
+</style>
 
 <script>
-function myFunction() {
-    var y, x, text;
-
-    // Get the value of the input field with id="numb"
-    x = document.getElementById("numb").value;
-	y=document.getElementById("numb").value;
-    // If x is Not a Number or less than one or greater than 10
-    if (isNaN(x) || x < 1 || x > 10) {
-        text = "Input not valid";
-        y.disable=true
-    } 
-    else {
-        text = "Input OK";
-        y.removeAttribute("disabled");//=false;
-    }
-    document.getElementById("demo").innerHTML = text;
-}
-
-
-function allLetter(x)  
-{
-alert("123");
-document.getElementById("my_submit").disable=true;
-var submit= document.getElementById("my_submit").disable=true;
-var letters = /^[A-Za-z]+$/; 
-if(x.value.match(letters))  
-{
-alert('Your name have accepted : you can try another');  
-submit.disabled=true;
-return false;
-}
-else  
-{
-alert('Please input alphabet characters only');  
-$("#submit").attr("disabled");
-return true;
-}
-}
+    history.forward();
 </script>
+
+
+
 </head>
 
 <body>
@@ -245,28 +47,18 @@ return true;
   <div class="toolbar">
     <div class="uou-block-1a blog">
       <div class="container">
-        <div class="search"> <a href="#" class="toggle fa fa-search"></a>
+        <!-- <div class="search"> <a href="#" class="toggle fa fa-search"></a>
           <form action="#">
             <input type="text" class="search-input" placeholder="Search ...">
             <input type="submit" value="ï">
           </form>
-        </div>
+        </div> -->
         <ul class="social">
-          <li><a href="#" class="fa fa-facebook"></a></li>
-          <li><a href="#" class="fa fa-twitter"></a></li>
-          <li><a href="#" class="fa fa-google-plus"></a></li>
+          <li><a target="_blank" href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+          <li><a target="_blank" href="https://twitter.com/login" class="fa fa-twitter"></a></li>
+          <li><a target="_blank" href="#" class="fa fa-google-plus"></a></li>
         </ul>
-        <ul class="authentication">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Register</a></li>
-        </ul>
-        <div class="language"> <a href="#" class="toggle"><img src="images/flags/32/US.png" alt=""> ENG</a>
-          <ul>
-            <li><a href="#"><img src="images/flags/32/PT.png" alt=""> ENG</a></li>
-            <li><a href="#"><img src="images/flags/32/FR.png" alt=""> FR</a></li>
-            <li><a href="#"><img src="images/flags/32/ES.png" alt=""> ES</a></li>
-          </ul>
-        </div>
+               
       </div>
     </div>
     <!-- end .uou-block-1a --> 
@@ -275,25 +67,25 @@ return true;
   
   <div class="box-shadow-for-ui">
     <div class="uou-block-2b">
-      <div class="container"> <a href="#" class="logo"><img src="images/logo.png" alt=""></a> <a href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
+      <div class="container"> <a href="#" class="logo"><img src="images/bugfree_logo.jpg" alt=""></a> <a href="#" class="mobile-sidebar-button mobile-sidebar-toggle"><span></span></a>
         <nav class="nav">
           <ul class="sf-menu">
             <li class="active"><a href="Home.jsp"><i class="fa  fa-home"></i></a></li>
-            <li> <a href="listing-filter.jsp">Professionals</a> </li>
-            <li> <a href="Home.jsp">Pages</a>
-              <ul>
-                <li><a href="profilecompany.jsp">Profile Company</a></li>
-                <li><a href="">Profile Company No Tabs</a></li>
-                <li><a href="user-dashboard(connections)(hotkeys-disabled).html">User Dashboard 1</a></li>
-                <li><a href="user-dashboard(connections)(hotkeys-enabled).html">User Dashboard 2</a></li>
-                <li><a href="user-dashboard(followers).html">User Dashboard 3</a></li>
-                <li><a href="user-dashboard(following).html">User Dashboard 4</a></li>
-                <li><a href="blog-post.jsp">Blog Post</a></li>
-              </ul>
-            </li>
-            <li> <a href="user-profile(layout-1).jsp">User Profile</a></li>
-            <li><a href="blog.jsp">Blog</a></li>
-            <li><a href="gui-kit.html">GUI KIT</a></li>
+<!--             <li> <a href="listing-filter.jsp">Professionals</a> </li> -->
+<!--             <li> <a href="Home.jsp">Pages</a> -->
+<!--               <ul> -->
+<!--                 <li><a href="profilecompany.jsp">Profile Company</a></li> -->
+<!--                 <li><a href="">Profile Company No Tabs</a></li> -->
+<!--                 <li><a href="user-dashboard(connections)(hotkeys-disabled).html">User Dashboard 1</a></li> -->
+<!--                 <li><a href="user-dashboard(connections)(hotkeys-enabled).html">User Dashboard 2</a></li> -->
+<!--                 <li><a href="user-dashboard(followers).html">User Dashboard 3</a></li> -->
+<!--                 <li><a href="user-dashboard(following).html">User Dashboard 4</a></li> -->
+<!--                 <li><a href="blog-post.jsp">Blog Post</a></li> -->
+<!--               </ul> -->
+<!--             </li> -->
+<!--             <li> <a href="user-profile(layout-1).jsp">User Profile</a></li> -->
+<!--             <li><a href="blog.jsp">Blog</a></li> -->
+<!--             <li><a href="gui-kit.html">GUI KIT</a></li> -->
           </ul>
         </nav>
       </div>
@@ -313,7 +105,7 @@ return true;
           <div class="col-sm-7">
             <div class="text-area">
               <div class="position-center-center col-md-10">
-                <h1> Here comes the social networking platform that youâve been waiting for</h1>
+                <h1> Here comes the social networking platform that you've been waiting for</h1>
                 <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue conseqaut nibbhi ellit ipsum consectetur. </h6>
               </div>
             </div>
@@ -326,65 +118,98 @@ return true;
               <!-- TABS -->
               <div class="uou-tabs">
                 <ul class="tabs">
-                  <li><a href="#register">Register Now</a></li>
-                  <li class="active"><a href="#log-in">Member Login</a></li>
-                   <li><a href="#fpass">Forgot Password</a></li>
+                  <li id="res"><a href="#register">Register Now</a></li>
+                  <li id="ln" class="active"><a href="#log-in">Member Login</a></li>
+<!--                    <li class="forget"><a href="#fpass">Forgot Password</a></li> -->
                 </ul>
                 
                 <!-- REGISTER -->
                 <div class="content">
                   <div id="register">
-                    <form action="<%=request.getContextPath()%>/RegistrationController?flag=reg" method="post">
-                      <input type="text" name="firstname" onchange="allLetter(this)" maxlength="20" placeholder="First Name" required="required">
-                      <input type="text" name="lastname" placeholder="Last Name" required="required">
-                     
-                      <input type="email" name="email" onchange="loadData()" id="email" placeholder="Email Address" required="required">
-                       <span id="pqr"></span>
-                       
-                      <input type="tel" id="demo" placeholder="">
-                      Select Country:<select  onchange="print_state('state',this.selectedIndex);" id="country" name ="country"></select>
+                    <form id="frmregister" name="register" action="<%=request.getContextPath() %>/UserRegisterController" method="post">
+                    <div class="divValidate">
+                       <label>First Name <span class="text-danger">*</span></label>
+                      <input type="text"  name="firstname" id="firstname" onkeypress="return onlyAlphabets(event, this);"  placeholder="First Name" />
+                     </div>
+                     <div class="divValidate">
+                      <label>Last Name <span class="text-danger">*</span></label>
+                      <input type="text" name="lastname" id="lastname" onkeypress="return onlyAlphabets(event, this);"  placeholder="Last Name" />
+                      </div>
+                      <div class="divValidate">
+                      <label>Email Address </label>
+                      <span class="text-danger" id="pqr">*</span>
+                      <input type="email" onchange="loadData()" id="email"  name="email" placeholder="Email Address" />
+                      </div>
+                      <div class="divValidate">
+                      <label>Phone <span class="text-danger">*</span></label>
+                      <input type="text" id="phone" name="phone" maxlength="12" onkeypress="return onlyNumeric(event, this);"  placeholder="Phone" />
+                      </div>
+                      <div class="divValidate">
+                      <label>Password <span class="text-danger">*</span></label>
+                      <input type="password" id="password" name="password" placeholder="Password" />
+                      </div>
+                      <div class="divValidate">
+                      <label>Confirm Password <span class="text-danger">*</span></label>
+                      <input type="password" id="rpassword" name="rpassword" placeholder="Confirm Password" /><br>
+                      </div>
                       
-                      <select name ="state" id ="state"></select>
-                     <script language="javascript">print_country("country");</script>
-                      <input type="text" name="phone" id="numb" onchange="myFunction()" maxlength="10" placeholder="Phone" required="required">
-                      <input type="password" name="password" placeholder="Password" required="required">
-                      
-                      <select name="admin" >
-                      <option>Trainee</option>
+                      <div class="divValidate">
+                      <label>Designation <span class="text-danger">*</span></label>
+                      <select name="designation">
+                      <option>Hiring Manager</option>
+                      <option>Recruiter</option>
                       <option>Trainer</option>
                       <option>Mentor</option>
-                      <option>Recruiters</option>
-                      </select>
+                      <option>Trainee</option>
+                      </select><br>
+                      </div>
                       
                       
-                      
-                      <input type="password" name="rpassword" placeholder="Confirm Password" required="required">
-                      <input type="button" id="my_submit" value="Submit">
-                      <button id="my_submit" type="submit" >Register</button>
-                      <div class="login-with"> <span>Or login with:</span> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-google"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> </div>
+                      <input type="submit" id="btnRegister" style="background-color:#0099ff" class="btn btn-primary" value="Register" />
+<!--                       <button id="btnRegister" type="submit" value="Register">Register</button> -->
+<!--                      <input type="submit" id="btnRegister" class="btn btn-primary" value="Register" /> -->
+<!--                       <div class="login-with"> <span>Or login with:</span> <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-google"></i></a> <a target="_blank" href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a> </div> -->
                     </form>
                   </div>
                   
                   <!-- LOGIN -->
                   <div id="log-in" class="active">
-                    <form action="<%=request.getContextPath() %>/UserLoginController?flag=login" method="post">
-                      <input type="email" name="email" placeholder="Email Address" required="required">
-                      <input type="password" name="password" placeholder="Password" required="required">
-                      <button type="submit">Login</button>
-                      <div class="login-with"> <span>Or login with:</span> <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-google"></i></a> <a target="_blank" href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a> </div>
-                      <div class="forget">Forgot your password? <a href="#fpass">Click Here</a></div>
+                  
+                    <form id="frmlogin" name="frmlogin" action="<%=request.getContextPath() %>/UserLoginController?flag=login" method="post">
+                    <%
+                    String msg="";
+                    HttpSession regusers = request.getSession(); 
+                    if(request.getAttribute("passnotmatch") != null)
+                    {
+                    	 msg = request.getAttribute("passnotmatch").toString();
+                    	
+                    %>
+                    <span style="color:yellow"><%=msg %> </span>
+                    <% }  %>
+                     <div class="divValidate">
+                   		<label>Email Address <span class="text-danger" id="loginpqr">*</span></label>
+                      <input type="email" onchange="validatelogin()" id="regemail" name="email" placeholder="Email Address" >
+                      </div>
+                       <div class="divValidate">
+                      <label>Password <span class="text-danger">*</span></label>
+                      <input type="password" name="password"  placeholder="Password" >
+                      </div>
+                      <input type="submit" id="loginsubmit" style="background-color:#0099ff" class="btn btn-primary" value="login" />
+                      <!-- <button id="otpsubmit" type="submit"></button> -->
+<!--                       <div class="login-with"> <span>Or login with:</span> <a target="_blank" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-google"></i></a> <a target="_blank" href="https://www.linkedin.com/uas/login"><i class="fa fa-linkedin"></i></a> </div> -->
+<!--                        --><div class="forget">Forgot your password? <a href="#fpass">Click Here</a></div>
+                      
+                                           
                     </form>
                   </div>
-                  
                   <div  id="fpass">
-                    <form action="<%=request.getContextPath() %>/FpsswdController" method="post">
-                      <input type="email" name="email" onchange="loademail()" id="otpemail" placeholder="Email Address">
-                    	<div>
-                    	<span id="otpqr"></span>
-                    	</div>
-                     
-                       
-                      <button type="submit" disabled="disabled" id="otpsubmit">Login</button>
+                    <form id="frmfpass" action="<%=request.getContextPath() %>/FpsswdController" method="post">
+                     <div class="divValidate">
+                     <label>Email Address <span class="text-danger" id="otpqr">*</span></label>
+                      <input type="email" onchange="loademail()" id="otpemail" name="email"  placeholder="Enter registered E-mail Address here">
+                      </div>
+                      <!-- <input  style="background-color:#0099ff" class="btn btn-primary" onsubmit="loademail()" id="otpsubmit" type="submit" value="Submit"/> -->
+                      <button type="submit" disable="disable" id="otpsubmit" >Submit</button>
                     </form>
                   </div>
                 </div>
@@ -510,39 +335,39 @@ return true;
             <!-- SLide -->
             <div class="clints-text">
               <div class="text-in">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue.</p>
+                <p>"Bugfree technologies is one of d quickest service providers. They understand your needs completely and try to fulfill them. It's wonderful to work with the efficient team."</p>
               </div>
               <div class="avatar">
                 <div class="media-left"> <a href="#."> <img src="images/clients-avatar-1.jpg" alt=""> </a> </div>
                 <div class="media-body">
-                  <h6>John Kevin Mara</h6>
-                  <span>smashingmagazine.com</span> </div>
+                  <h6>Hiren Pancholi</h6>
+                  <span>hiren@bugfreetechnologies.com</span> </div>
               </div>
             </div>
             
             <!-- SLide -->
             <div class="clints-text">
               <div class="text-in">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue.</p>
+                <p>"We have Found Best partner in Bugfree Technologies, The way they handle our project & Delivery with proper testing wins our heart."</p>
               </div>
               <div class="avatar">
                 <div class="media-left"> <a href="#."> <img src="images/clients-avatar-1.jpg" alt=""> </a> </div>
                 <div class="media-body">
-                  <h6>John Kevin Mara</h6>
-                  <span>smashingmagazine.com</span> </div>
+                  <h6>Dhruv Sharma</h6>
+                  <span>dhruv@bugfreetechnologies.com</span> </div>
               </div>
             </div>
             
             <!-- SLide -->
             <div class="clints-text">
               <div class="text-in">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Proin nibh augue.</p>
+                <p>"We are having our own devlopment team. So, we have given Bugfree Technologies just testing task for our ecommerce store & they have delievered the best."</p>
               </div>
               <div class="avatar">
                 <div class="media-left"> <a href="#."> <img src="images/clients-avatar-1.jpg" alt=""> </a> </div>
                 <div class="media-body">
-                  <h6>John Kevin Mara</h6>
-                  <span>smashingmagazine.com</span> </div>
+                  <h6>Samarth Modi</h6>
+                  <span>samarth@bugfreetechnologies.com</span> </div>
               </div>
             </div>
           </div>
@@ -557,13 +382,13 @@ return true;
           <div class="col-md-12">
             <h3 class="section-title">Our Sponsors</h3>
             <div class="sponsors-slider">
-              <div class="item"><img src="../images/sponsor_logo1.png" alt="" class="img-responsive"></div>
-              <div class="item"><img src="../images/sponsor_logo2.png" alt="" class="img-responsive"></div>
-              <div class="item"><img src="../images/sponsor_logo3.png" alt="" class="img-responsive"></div>
-              <div class="item"><img src="../images/sponsor_logo4.png" alt="" class="img-responsive"></div>
-              <div class="item"><img src="../images/sponsor_logo5.png" alt="" class="img-responsive"></div>
-              <div class="item"><img src="../images/sponsor_logo6.png" alt="" class="img-responsive"></div>
-              <div class="item"><img src="../images/sponsor_logo4.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo1.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo2.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo3.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo4.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo5.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo6.png" alt="" class="img-responsive"></div>
+              <div class="item"><img src="images/sponsor_logo4.png" alt="" class="img-responsive"></div>
             </div>
           </div>
         </div>
@@ -576,15 +401,19 @@ return true;
 <div class="uou-block-4e">
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-sm-6"> <a href="#" class="logo"><img src="images/logo.png" alt=""></a>
+      <div class="col-md-3 col-sm-6"> <a href="#" class="logo"><img src="images/bugfree_logo.jpg" alt=""></a>
         <ul class="contact-info has-bg-image contain" data-bg-image="images/footer-map-bg.png">
           <li> <i class="fa fa-map-marker"></i>
             <address>
-            795 Folsom Ave, Suite 600, San Francisco, CA 94107
+           			India
+					312, 3rd Floor, Pratik Mall,
+					Near City Pulse Multiplex,
+					Gandhinagar (GUJARAT) - 382421
+					
             </address>
           </li>
-          <li> <i class="fa fa-phone"></i> <a href="tel:#">(123) 456-7890</a> </li>
-          <li> <i class="fa fa-envelope"></i> <a href="mailto:#">first.last@example.com</a> </li>
+          <li> <i class="fa fa-phone"></i> <a href="tel:#">Mobile: +91 97146 40210</a> </li>
+          <li> <i class="fa fa-envelope"></i> <a href="mailto:#">info@bugfreetechnologies.com</a> </li>
         </ul>
       </div>
       <div class="col-md-3 col-sm-6">
@@ -624,7 +453,7 @@ return true;
       <li><a href="#">Privacy Policy</a></li>
       <li><a href="#">Terms &amp; Conditions</a></li>
     </ul>
-    <p>Copyright &copy; 2015 <a href="#">UOUAPPS</a>. All Rights reserved.</p>
+    <p>Copyright &copy; 2016 <a href="#">The Skills Network</a>. All Rights reserved.</p>
   </div>
 </div>
 <!-- end .uou-block-4a -->
@@ -653,25 +482,466 @@ return true;
 
 <!-- Scripts --> 
 <script src="https://maps.googleapis.com/maps/api/js"></script> 
-<script src="<%=request.getContextPath()%>/js/jquery-2.1.3.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script> 
-<script src="<%=request.getContextPath()%>/js/plugins/superfish.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/jquery.ui.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/plugins/rangeslider.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/plugins/jquery.flexslider-min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/uou-accordions.js"></script> 
-<script src="<%=request.getContextPath()%>/js/uou-tabs.js"></script> 
-<script src="<%=request.getContextPath()%>/js/plugins/select2.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/owl.carousel.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/gmap3.min.js"></script> 
-<script src="<%=request.getContextPath()%>/js/scripts.js"></script> 
-<script type="text/javascript" src="<%=request.getContextPath()%>/js/registration.js"></script>
-<!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
-<script src="<%=request.getContextPath()%>/User/js/intlTelInput.js"></script>
+<script src="js/jquery-2.1.3.min.js"></script> 
+<script src="js/bootstrap.js"></script> 
+<script src="js/plugins/superfish.min.js"></script> 
+<script src="js/jquery.ui.min.js"></script> 
+<script src="js/plugins/rangeslider.min.js"></script> 
+<script src="js/plugins/jquery.flexslider-min.js"></script> 
+<script src="js/uou-accordions.js"></script> 
+<script src="js/uou-tabs.js"></script> 
+<script src="js/plugins/select2.min.js"></script> 
+<script src="js/owl.carousel.min.js"></script> 
+<script src="js/gmap3.min.js"></script> 
+<script src="js/scripts.js"></script> 
+<script src="assets/js/custom.js"></script>
 
+
+<!-- <script src="jquery-1.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script> -->
+<!-- <script src="js/headroom.min.js"></script> -->
+<!-- <script src="js/jQuery.headroom.min.js"></script> -->
+<!-- <script src="js/template.js"></script> -->
+
+<script src="js/plugins/jquery-validation-1.11.1/dist/jquery.validate.min.js"></script>
+
+<%
+	if(regusers.getAttribute("emailnotmatch") != null){
+	%>
+	<script>
+	alert("Invalid Email Address");
+	jQuery("#ln").removeAttr("class","active");
+	jQuery("#log-in").removeAttr("class","active");
+	jQuery("#register").attr("class","active");
+	 jQuery("#res").attr("class","active");
+	 </script>
+	 <%
+	}
+	 %>
+<script type="text/javascript">
+
+
+
+
+$(document).ready(function(){
+	
+	$('input[type="text"]').keydown(function(e) {
+	    if (e.keyCode == 32) {
+	        return false;
+	    }
+	});
+	
+jQuery(".forget").click(function(){
+		
+	jQuery("#ln").removeAttr("class","active");
+	jQuery("#log-in").removeAttr("class","active");
+	jQuery("#register").removeAttr("class","active");
+	jQuery("#res").removeAttr("class","active");
+	jQuery("#fpass").attr("class","active");
+	$('html,body').animate({ scrollTop: 0 }, 'fast');
+	jQuery("#otpemail").focus();
+	});
+	
+	
+	jQuery.validator.addMethod("lettersonly", function (value, element) {
+	    //return this.optional(element) || /^[a-z]+$/i.test(value);
+	    return this.optional(element) || /^[a-zA-Z]*$/i.test(value);
+	}, "Enter only alphabet characters.");
+	jQuery.validator.addMethod("email", function (value, element) {
+	    //return this.optional(element) || /^[a-z]+$/i.test(value);
+	    return this.optional(element) || /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/i.test(value);
+	}, "Enter only Email Address Here.");
+	 jQuery.validator.addMethod("validpassword", function (value, element) {
+		     //return this.optional(element) || /^[a-z]+$/i.test(value);       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+		     return this.optional(element) || /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/i.test(value);
+		 }, "Input must contain at least one digit/special characters and alphanumeric letter and be at least six characters long.");
+	
+// 	 jQuery.validator.addMethod("digits", function (value, element) {
+// 		    //return this.optional(element) || /^[a-z]+$/i.test(value);
+// 		    return this.optional(element) ||  /^\+(?:[0-9] ?){6,14}[0-9]$/i.test(value);
+// 		}, "Enter only numbers.");
+	
+	 
+	 
+	$('#btnRegister').on('click', function(){		
+		$('#frmregister').validate({
+	        rules: {
+	        	firstname: {
+	                required: true,
+	                minlength: 2,
+	                maxlength: 70,
+	                lettersonly:true
+	            },
+	           lastname: {
+	                required: true,
+	                minlength: 2,
+	                maxlength: 70,
+	                lettersonly:true
+	            },
+	            email: {
+	                required: true,
+	                minlength: 2,
+	                maxlength: 70,
+	                email:true
+	            },
+	            password: {
+	                required: true,
+	                minlength: 6,
+	                maxlength: 16,
+	                validpassword : true
+	            },
+	            rpassword: {
+	                required: true,
+	                minlength: 6,
+	                maxlength: 16,
+	                equalTo: "#password"
+	            },
+	            phone: {
+	                required: true,
+	                minlength: 10,
+	                maxlength: 12,
+	                digits:true
+	            }
+	        },
+	        errorClass: 'help-block',
+	        errorElement: 'span',
+	        highlight: function (element, errorClass, validClass) {	        	
+	        	/* $(element).css('border','1px solid red');	            
+	            $(element).parents().removeClass('validate-success').addClass('validate-error'); */
+	        	$(element).parents('.divValidate').removeClass('has-success').addClass('has-error');	            
+	        },
+	        unhighlight: function (element, errorClass, validClass) {
+	        	/* $(element).css('border','1px solid green');
+	        	$(element).parents().removeClass('validate-error').addClass('validate-success'); */
+	        	$(element).parents('.divValidate').removeClass('has-error').addClass('has-success');
+	        },  
+	        submitHandler: function () {                
+                $('#frmregister').submit();
+            }
+	    });
+		
+	});
+
+});
+</script>
 
 <script>
-$("#demo").intlTelInput();
+var temp=true;
+
+function loadData()
+ {
+// alert("check");
+ //  var data_file = "http://localhost:8080/Project2/Admin/loadUser.jsp";
+  var email=document.getElementById("email").value;
+  
+  //alert("email is:" +email);
+  
+  var xmlhttp;
+  
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp=new XMLHttpRequest();
+   // alert("request done");
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+ 
+ 
+  
+  xmlhttp.onreadystatechange = function() {
+  
+   if (xmlhttp.readyState == 4) {
+  //  alert("Return111");
+    
+    var jsonObj = JSON.parse(xmlhttp.responseText);
+    for(i=0 ; i<jsonObj.length ; i++)
+    {
+    // document.getElementById("abcd").innerHTML = jsonObj[i].email;
+              
+    document.getElementById("pqr").innerHTML = jsonObj[i].email+"Already Exists";
+    temp=false;
+//     btnRegister.disabled=true;
+	$('#btnRegister').attr('disabled',true);
+   // Alert("Already Exist");
+    //var a=jsonObj.length();
+    //alert(a);
+    //alert(d);
+    //alert("Return222");
+    //document.getElementById('abcd').innerHTML="jsonObj.userName";
+    //alert("Return333");
+  
+   }
+    if(jsonObj.length == 0)
+     {
+     document.getElementById("pqr").innerHTML = "";
+     //Alert("Out of loop");
+      //btnRegister.removeAttribute("disabled");
+	$('#btnRegister').removeAttr('disabled',true);
+     temp=true;
+     }
+  }
+
+  }
+ // alert("sending");
+  xmlhttp.open("get", "${pageContext.request.contextPath}/UserRegisterController?flag=searchUserName&email="+email,true);
+  xmlhttp.send();
+  
+  /* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+   0: request not initialized
+   1: server connection established
+   2: request received
+   3: processing request
+   4: request finished and response is ready */
+ }
 </script>
+
+<script>
+var temp=true;
+
+function loademail()
+ {
+ //alert("check email");
+ //  var data_file = "http://localhost:8080/Project2/Admin/loadUser.jsp";
+  var email=document.getElementById("otpemail").value;
+  var my_submit=document.getElementById("otpsubmit");
+//  alert("email for otp is:" +email);
+  
+    
+  var xmlhttp;
+  
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp=new XMLHttpRequest();
+  //  alert("request done");
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+ 
+ 
+  
+  xmlhttp.onreadystatechange = function() {
+  
+   if (xmlhttp.readyState == 4) {
+  //  alert("Return111");
+    
+    var jsonObj = JSON.parse(xmlhttp.responseText);
+    for(i=0 ; i<jsonObj.length ; i++)
+    {
+    // document.getElementById("abcd").innerHTML = jsonObj[i].email+"";
+              
+    document.getElementById("otpqr").innerHTML = "";
+    otpsubmit.removeAttribute("disabled");
+    temp=false;
+    
+    
+    
+    //var a=jsonObj.length();
+    //alert(a);
+    //alert(d);
+    //alert("Return222");
+    //document.getElementById('abcd').innerHTML="jsonObj.userName";
+    //alert("Return333");
+  
+   }
+    
+    
+    if(jsonObj.length == 0)
+     {
+     document.getElementById("otpqr").innerHTML = "Email Doesn't Exist";
+     
+     //otpsubmit.disabled=true;
+     $('#otpsubmit').attr('disabled',true);
+    // Alert("Already Exist");
+   //  Alert("Out of loop");
+     
+    
+     temp=true;
+     }
+  }
+
+  }
+ // alert("sending");
+  xmlhttp.open("get", "${pageContext.request.contextPath}/UserRegisterController?flag=searchUserName&email="+email,true);
+  xmlhttp.send();
+  
+  /* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+   0: request not initialized
+   1: server connection established
+   2: request received
+   3: processing request
+   4: request finished and response is ready */
+ }
+</script>
+
+<script>
+var temp=true;
+
+function validatelogin()
+ {
+// alert("check");
+ //  var data_file = "http://localhost:8080/Project2/Admin/loadUser.jsp";
+  var email=document.getElementById("regemail").value;
+  var my_submit=document.getElementById("loginsubmit");
+  //alert("email for otp is:" +email);
+  
+  var xmlhttp;
+  
+  if (window.XMLHttpRequest)
+    {// code for IE7+, Firefox, Chrome, Opera, Safari
+     xmlhttp=new XMLHttpRequest();
+   // alert("request done");
+    }
+  else
+    {// code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+ 
+ 
+  
+  xmlhttp.onreadystatechange = function() {
+  
+   if (xmlhttp.readyState == 4) {
+   // alert("Return111");
+    
+    var jsonObj = JSON.parse(xmlhttp.responseText);
+    for(i=0 ; i<jsonObj.length ; i++)
+    {
+    // document.getElementById("abcd").innerHTML = jsonObj[i].email;
+              
+    document.getElementById("loginpqr").innerHTML = "";
+    loginsubmit.removeAttribute("disabled");
+    temp=false;
+//     btnRegister.disabled=true;
+	
+	 //var a=jsonObj.length();
+    //alert(a);
+    //alert(d);
+    //alert("Return222");
+    //document.getElementById('abcd').innerHTML="jsonObj.userName";
+    //alert("Return333");
+  
+   }
+    if(jsonObj.length == 0)
+     {
+    	document.getElementById("loginpqr").innerHTML = "Email Doesn't Exist";
+    	 $('#loginsubmit').attr('disabled',true);
+        // Alert("Already Exist");
+      //   Alert("Out of loop");
+         
+     temp=true;
+     }
+  }
+
+  }
+ // alert("sending");
+  xmlhttp.open("get", "${pageContext.request.contextPath}/UserRegisterController?flag=searchUserName&email="+email,true);
+  xmlhttp.send();
+  
+  /* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+   0: request not initialized
+   1: server connection established
+   2: request received
+   3: processing request
+   4: request finished and response is ready */
+ }
+</script>
+
+<script type="text/javascript">
+
+
+
+$(document).ready(function(){	
+	
+	
+	jQuery.validator.addMethod("email", function (value, element) {
+	    //return this.optional(element) || /^[a-z]+$/i.test(value);
+	    return this.optional(element) || /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/i.test(value);
+	}, "Enter only Email Address Here.");
+	 jQuery.validator.addMethod("loginvalidpassword", function (value, element) {
+		     //return this.optional(element) || /^[a-z]+$/i.test(value);       /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/
+		     return this.optional(element) || /(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}$/i.test(value);
+		 },"This field is required");
+	
+// 	 jQuery.validator.addMethod("digits", function (value, element) {
+// 		    //return this.optional(element) || /^[a-z]+$/i.test(value);
+// 		    return this.optional(element) ||  /^\+(?:[0-9] ?){6,14}[0-9]$/i.test(value);
+// 		}, "Enter only numbers.");
+	
+	 
+	 
+	$('#loginsubmit').on('click', function(){		
+		$('#frmlogin').validate({
+	        rules: {
+	        	
+	        	email: {
+	                required: true,
+	                minlength: 2,
+	                maxlength: 70,
+	                email:true
+	            },
+	            password: {
+	                required: true,
+	                minlength: 6,
+	                maxlength: 16,
+	                loginvalidpassword : false
+	            }
+	        },
+	        errorClass: 'help-block',
+	        errorElement: 'span',
+	        highlight: function (element, errorClass, validClass) {	        	
+	        	/* $(element).css('border','1px solid red');	            
+	            $(element).parents().removeClass('validate-success').addClass('validate-error'); */
+	        	$(element).parents('.divValidate').removeClass('has-success').addClass('has-error');	            
+	        },
+	        unhighlight: function (element, errorClass, validClass) {
+	        	/* $(element).css('border','1px solid green');
+	        	$(element).parents().removeClass('validate-error').addClass('validate-success'); */
+	        	$(element).parents('.divValidate').removeClass('has-error').addClass('has-success');
+	        },  
+	        submitHandler: function () {                
+                $('#frmlogin').submit();
+            }
+	    });
+		
+	});
+	
+	$('#otpsubmit').on('click', function(){		
+		$('#frmfpass').validate({
+	        rules: {
+	        	
+	        	email: {
+	                required: true,
+	                minlength: 2,
+	                maxlength: 70,
+	                email:true
+	            },
+	            
+	        },
+	        errorClass: 'help-block',
+	        errorElement: 'span',
+	        highlight: function (element, errorClass, validClass) {	        	
+	        	/* $(element).css('border','1px solid red');	            
+	            $(element).parents().removeClass('validate-success').addClass('validate-error'); */
+	        	$(element).parents('.divValidate').removeClass('has-success').addClass('has-error');	            
+	        },
+	        unhighlight: function (element, errorClass, validClass) {
+	        	/* $(element).css('border','1px solid green');
+	        	$(element).parents().removeClass('validate-error').addClass('validate-success'); */
+	        	$(element).parents('.divValidate').removeClass('has-error').addClass('has-success');
+	        },  
+	        submitHandler: function () {                
+                $('#frmfpass').submit();
+            }
+	    });
+		
+	});
+
+});
+</script>
+
 </body>
 </html>
